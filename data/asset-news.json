@@ -1,13 +1,25 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-03T23:11:00Z",
-  "analysisDate": "2026-11-03",
-  "dataAsOf": "2026-11-03",
+  "generatedAt": null,
+  "analysisDate": null,
+  "dataAsOf": null,
+  "baseCurrency": "CAD",
   "portfolioState": {
     "holdings": [],
     "watchlist": [],
     "newsTrackingTargets": []
   },
   "coveredAssets": [],
+  "summary": {
+    "totalItems": 0,
+    "criticalItems": 0,
+    "highImportanceItems": 0,
+    "positiveItems": 0,
+    "negativeItems": 0,
+    "mixedItems": 0,
+    "uncertainItems": 0,
+    "correctedItems": 0,
+    "retractedItems": 0
+  },
   "items": []
 }
