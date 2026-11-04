@@ -581,5 +581,14 @@ $('verifiedNewsFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',build);else build();
 })();
 </script>
+<script id="assetNewsEmergencyFix">
+(function(){'use strict';
+function openAssetNews(){const target=document.getElementById('assetNews');if(!target){alert('자산 뉴스 화면을 찾지 못했습니다.');return}document.querySelectorAll('.page').forEach(page=>{const on=page===target;page.classList.toggle('on',on);page.style.display=on?'block':'none';page.setAttribute('aria-hidden',on?'false':'true')});document.body.className='theme-asset';document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('on',b.dataset.page==='assetNews'));document.getElementById('siteMenu')?.classList.remove('open');document.getElementById('menuBackdrop')?.classList.remove('on');document.body.classList.remove('menu-open');history.replaceState(null,'','#assetNews');window.scrollTo(0,0);try{window.renderAssetNews?.()}catch(e){console.warn('Asset news render warning:',e)}}
+window.openAssetNews=openAssetNews;
+document.addEventListener('click',e=>{const b=e.target.closest('[data-page="assetNews"]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();openAssetNews()},true);
+function addEntry(){const host=document.querySelector('#assetHome .portal-shell')||document.getElementById('assetHome');if(host&&!host.querySelector('[data-emergency-news-entry]')){const section=document.createElement('section');section.className='card';section.dataset.emergencyNewsEntry='true';section.innerHTML='<div class="row"><div><div class="portal-eyebrow">Verified market updates</div><h2>자산 뉴스</h2><p class="muted">자산 뉴스와 통합 업데이트 도구를 엽니다.</p></div><button type="button" class="primary">자산 뉴스 열기</button></div>';section.querySelector('button').onclick=openAssetNews;host.append(section)}if(location.hash==='#assetNews')openAssetNews()}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',addEntry);else addEntry();
+})();
+</script>
 </body>
 </html>
