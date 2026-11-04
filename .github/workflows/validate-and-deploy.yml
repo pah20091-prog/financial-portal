@@ -1,36 +1,20 @@
 name: Validate and deploy portal
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-concurrency:
-  group: pages
-  cancel-in-progress: true
+on: {push: {branches: [main]}, workflow_dispatch: {}}
+permissions: {contents: read, pages: write, id-token: write}
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
-        with:
-          python-version: '3.x'
-      - name: Validate portal files
-        run: python scripts/validate_portal.py
+      - run: python scripts/validate_portal.py
   deploy:
     needs: validate
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    environment: {name: github-pages, url: '${{ steps.deployment.outputs.page_url }}'}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
-        with:
-          path: '.'
+        with: {path: '.'}
       - id: deployment
         uses: actions/deploy-pages@v4

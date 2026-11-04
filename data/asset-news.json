@@ -1,9 +1,1 @@
-{
-  "schemaVersion": "1.0",
-  "generatedAt": "2026-11-03T23:11:00Z",
-  "analysisDate": "2026-11-03",
-  "dataAsOf": "2026-11-03",
-  "portfolioState": {"holdings": [], "watchlist": [], "newsTrackingTargets": []},
-  "coveredAssets": [],
-  "items": []
-}
+{"schemaVersion":"1.0","generatedAt":"2026-11-04T00:00:00Z","analysisDate":"2026-11-03","dataAsOf":"2026-11-03","portfolioState":{"holdings":[],"watchlist":[],"newsTrackingTargets":[]},"coveredAssets":[],"items":[]}
